@@ -19,12 +19,14 @@ public class MovePlayer : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.forward * 10, Color.blue);
 
+        m_rigidbody.freezeRotation = (Input.GetAxis("Vertical") == 0);
+
         // Forward / Backward
         if (Input.GetAxis("Vertical") != 0)
         {
-           m_rigidbody.AddForce(Input.GetAxisRaw("Vertical") * transform.forward * moveSpeed * 1000);
+            m_rigidbody.AddForce(Input.GetAxisRaw("Vertical") * transform.forward * moveSpeed * 1000);
 
-           transform.Translate(Input.GetAxisRaw("Vertical") * Vector3.forward * moveSpeed);
+            transform.Translate(Input.GetAxis("Vertical") * Vector3.forward * moveSpeed);
         }
 
         // Turn left / Right

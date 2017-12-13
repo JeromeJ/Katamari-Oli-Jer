@@ -26,9 +26,15 @@ public class StickyPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag != "ground")
+        if (collision.transform.tag != "ground")
+        {
             // Luke, je suis ton père !
             collision.transform.parent = this.transform;
+
+
+            collision.gameObject.GetComponent<Collider>().enabled = false;
+            Destroy(collision.gameObject.GetComponent<Rigidbody>());
+        }
     }
 
     #endregion
