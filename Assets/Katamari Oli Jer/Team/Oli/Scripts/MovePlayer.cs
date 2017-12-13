@@ -10,11 +10,8 @@ public class MovePlayer : MonoBehaviour
 {
 
     #region Public Members
-    public float moveSpeed = 0.3f;
+    public float moveSpeed = .3f;
     public float rotationSpeed = 8f;
-
-    public Transform m_transform;
-    public float m_movementSpeed;
 
     #endregion
 
@@ -22,15 +19,9 @@ public class MovePlayer : MonoBehaviour
 
     #endregion
 
+
     #region System
-    private void Move()
-    {
-        /*
-        m_previousPosition = m_transform.position;
-        m_previousposition.x += imput.Getaxis("Horizontal");
-        m_transform.position = m_transform previousPosition;
-        */
-    }
+   
 
     private void Awake()
     {
@@ -38,27 +29,29 @@ public class MovePlayer : MonoBehaviour
     }
     void Start () 
     {
-        if (Input.GetKey(KeyCode.UpArrow))
-
-        {
-
-            transform.Translate(Vector3.forward * moveSpeed);
-
-        }
-
-        else if (Input.GetKey(KeyCode.DownArrow))
-
-        {
-
-            transform.Translate(-Vector3.forward * moveSpeed);
-
-        }
+       
     }
 	
 	void Update () 
     {
-      
-	}
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.forward * moveSpeed);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(-Vector3.forward * moveSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(Vector3.up * rotationSpeed);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(Vector3.up * -rotationSpeed);
+        }
+    }
 
     #endregion
 
