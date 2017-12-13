@@ -17,10 +17,14 @@ public class MovePlayer : MonoBehaviour
     #region System
     private void Move()
     {
+        Debug.DrawRay(transform.position, transform.forward * 10, Color.blue);
+
         // Forward / Backward
         if (Input.GetAxis("Vertical") != 0)
         {
-            transform.Translate(Input.GetAxisRaw("Vertical") * Vector3.forward * moveSpeed);
+           m_rigidbody.AddForce(Input.GetAxisRaw("Vertical") * transform.forward * moveSpeed * 1000);
+
+           transform.Translate(Input.GetAxisRaw("Vertical") * Vector3.forward * moveSpeed);
         }
 
         // Turn left / Right
@@ -51,6 +55,13 @@ public class MovePlayer : MonoBehaviour
     #endregion
 
     #region Private and Protected Members
-   
+
+    [SerializeField]
+    private Transform m_transform;
+
+    [SerializeField]
+    private Rigidbody m_rigidbody;
+
+
     #endregion
 }
