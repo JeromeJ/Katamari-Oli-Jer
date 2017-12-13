@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KatamariController : MonoBehaviour
+public class StickyPlayer : MonoBehaviour
 {
     #region Public Members
 
@@ -26,7 +26,7 @@ public class KatamariController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == "collectible")
+        if(collision.transform.tag != "ground")
             collision.transform.parent = this.transform;
     }
 
