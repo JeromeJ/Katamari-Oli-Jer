@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickyPlayer : _Test
+public class StickyPlayer : AutoFindKatamariManager
 {
     #region Public Members
 

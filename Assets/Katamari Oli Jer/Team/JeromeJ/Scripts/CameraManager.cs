@@ -9,6 +9,7 @@ public class CameraManager : AutoFindKatamariManager
     public Camera m_camera;
     public Transform m_katamariBody;
     public float m_cameraDistance = 10f;
+    public SphereCollider m_sc;
 
     #endregion
 
@@ -18,15 +19,18 @@ public class CameraManager : AutoFindKatamariManager
 
     #region System
 
-    void Start () 
+    protected override void Awake()
     {
-		
-	}
-	
-	void Update () 
+        // m_sc = GetComponent<SphereCollider>();
+    }
+
+
+    private void Update()
     {
-        // float katamariScale = m_katamariBody.localScale.x;
+        float katamariScale = m_sc.radius * m_katamariBody.localScale.x;
         // m_cameraOffset = (m_camera.transform.position - m_katamariBody.position) * m_distanceRatioFromCamera;
+
+        float desiredDistance = m_cameraDistance * katamariScale * m_katManager.growth;
 
         // Explication:
         //
@@ -38,7 +42,7 @@ public class CameraManager : AutoFindKatamariManager
         //
         //     Permet de faire un m_camera.transform.Translate(dir * Vector3.forward * distanceDesiree) mais appelé une seule fois
         //
-        m_camera.transform.position = m_katamariBody.position + (m_camera.transform.forward * -m_cameraDistance);
+        m_camera.transform.position = m_katamariBody.position + (m_camera.transform.forward * -desiredDistance);
     }
 
     #endregion
