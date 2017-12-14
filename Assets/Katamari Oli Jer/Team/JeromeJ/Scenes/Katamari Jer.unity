@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 167397306}
   - component: {fileID: 167397305}
   - component: {fileID: 167397307}
+  - component: {fileID: 167397308}
   m_Layer: 0
   m_Name: Katamari
   m_TagString: Untagged
@@ -165,9 +166,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc4d751007e0b4b8eb5a8654225e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_katManager: {fileID: 0}
   m_camera: {fileID: 1082873540}
   m_katamariBody: {fileID: 218429428}
-  m_cameraDistance: 1
+  m_cameraDistance: 10
+--- !u!114 &167397308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 167397304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33300b77275c87a43886b8f12f98e886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growth: 0.1
 --- !u!1 &189018440
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0f0f79be8dc9f42a2d7d561d52c72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_growth: 0.1
+  m_katManager: {fileID: 0}
 --- !u!1 &341895004
 GameObject:
   m_ObjectHideFlags: 0

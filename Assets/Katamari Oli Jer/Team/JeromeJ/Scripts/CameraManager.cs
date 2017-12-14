@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour 
+public class CameraManager : AutoFindKatamariManager
 {
     #region Public Members
 
@@ -18,11 +18,6 @@ public class CameraManager : MonoBehaviour
 
     #region System
 
-    private void Awake()
-    {
-
-    }
-
     void Start () 
     {
 		
@@ -30,6 +25,9 @@ public class CameraManager : MonoBehaviour
 	
 	void Update () 
     {
+        // float katamariScale = m_katamariBody.localScale.x;
+        // m_cameraOffset = (m_camera.transform.position - m_katamariBody.position) * m_distanceRatioFromCamera;
+
         // Explication:
         //
         // m_camera.transform.position = A + (B * -C)

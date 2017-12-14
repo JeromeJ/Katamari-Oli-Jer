@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickyPlayer : MonoBehaviour
+public class StickyPlayer : _Test
 {
     #region Public Members
-
-    public float m_growth = .1f;
 
     #endregion
 
@@ -16,11 +14,10 @@ public class StickyPlayer : MonoBehaviour
 
     #region System
 
-    private void Awake()
+    protected override void Awake()
     {
         m_collider = GetComponent<SphereCollider>();
     }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -33,7 +30,7 @@ public class StickyPlayer : MonoBehaviour
             collision.gameObject.GetComponent<Collider>().enabled = false;
             Destroy(collision.gameObject.GetComponent<Rigidbody>());
 
-            m_collider.radius += m_growth;
+            m_collider.radius += m_katManager.growth;
         }
     }
 
