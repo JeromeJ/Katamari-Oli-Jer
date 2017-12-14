@@ -41,7 +41,8 @@ public class MovePlayer : MonoBehaviour
 
     private void Awake()
     {
-        m_rigidbody.constraints = m_rigidbody.constraints | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        // m_rigidbody.constraints = m_rigidbody.constraints | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        m_rigidbody.constraints = m_rigidbody.constraints | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
     }
 
 

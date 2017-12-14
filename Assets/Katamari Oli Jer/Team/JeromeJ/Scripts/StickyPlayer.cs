@@ -43,7 +43,10 @@ public class StickyPlayer : AutoFindKatamariManager
         collision.gameObject.GetComponent<Collider>().enabled = false;
         Destroy(collision.gameObject.GetComponent<Rigidbody>());
 
-        m_collider.radius += m_katManager.growth;
+        Vector3 newPos = transform.position;
+
+        newPos.y            += m_katManager.growth; transform.position = newPos;
+        m_collider.radius   += m_katManager.growth;
     }
 
     #endregion
