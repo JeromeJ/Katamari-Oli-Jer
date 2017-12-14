@@ -28,9 +28,10 @@ public class CameraManager : AutoFindKatamariManager
     private void Update()
     {
         float katamariScale = m_sc.radius * m_katamariBody.localScale.x;
-        // m_cameraOffset = (m_camera.transform.position - m_katamariBody.position) * m_distanceRatioFromCamera;
 
-        float desiredDistance = m_cameraDistance * katamariScale * m_katManager.growth;
+        // float desiredDistance = m_cameraDistance * katamariScale * m_katManager.growth;
+        // float desiredDistance = m_cameraDistance * (1 + m_katManager.growth);
+        float desiredDistance = m_cameraDistance * katamariScale;
 
         // Explication:
         //

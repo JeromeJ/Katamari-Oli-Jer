@@ -16,22 +16,34 @@ public class StickyPlayer : AutoFindKatamariManager
 
     protected override void Awake()
     {
-        m_collider = GetComponent<SphereCollider>();
+        m_collider = GetComponent<SphereCollider>(); // Pas bien
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag != "ground")
         {
-            // Luke, je suis ton père !
-            collision.transform.parent = this.transform;
+            float katamariScale = m_collider.radius * transform.localScale.x;
+            float targetScale = 0.3333333f * (collision.transform.localScale.x + collision.transform.localScale.y + collision.transform.localScale.z); 
 
-
-            collision.gameObject.GetComponent<Collider>().enabled = false;
-            Destroy(collision.gameObject.GetComponent<Rigidbody>());
-
-            m_collider.radius += m_katManager.growth;
+            if(katamariScale > targetScale)
+                StickToMe(collision);
         }
+    }
+
+    #endregion
+
+    #region Class Methods
+
+    private void StickToMe(Collision collision)
+    {
+        // Luke, je suis ton père !
+        collision.transform.parent = this.transform;
+
+        collision.gameObject.GetComponent<Collider>().enabled = false;
+        Destroy(collision.gameObject.GetComponent<Rigidbody>());
+
+        m_collider.radius += m_katManager.growth;
     }
 
     #endregion
