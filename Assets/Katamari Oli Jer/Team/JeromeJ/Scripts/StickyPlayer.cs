@@ -6,6 +6,8 @@ public class StickyPlayer : MonoBehaviour
 {
     #region Public Members
 
+    public float m_growth = .1f;
+
     #endregion
 
     #region Public void
@@ -14,15 +16,11 @@ public class StickyPlayer : MonoBehaviour
 
     #region System
 
-    void Start ()
+    private void Awake()
     {
-        
+        m_collider = GetComponent<SphereCollider>();
     }
 
-    void Update ()
-    {
-        	
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -34,6 +32,8 @@ public class StickyPlayer : MonoBehaviour
 
             collision.gameObject.GetComponent<Collider>().enabled = false;
             Destroy(collision.gameObject.GetComponent<Rigidbody>());
+
+            m_collider.radius += m_growth;
         }
     }
 
@@ -44,6 +44,8 @@ public class StickyPlayer : MonoBehaviour
     #endregion
 
     #region Private and Protected Members
+
+    private SphereCollider m_collider;
 
     #endregion
 }
